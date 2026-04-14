@@ -38,8 +38,7 @@ Built with Swift · SwiftUI · AppKit ·
 
 ## 📸 Screenshots
 
-<!-- Add screenshots here -->
-<!-- ![Multi-Term Screenshot](docs/screenshot.png) -->
+![Multi-Term in action](assets/screenshot.png)
 
 ## 📦 Installation
 

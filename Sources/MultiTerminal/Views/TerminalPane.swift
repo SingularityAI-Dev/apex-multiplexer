@@ -152,6 +152,14 @@ class TerminalPaneView: NSView, LocalProcessTerminalViewDelegate {
 
     override func mouseDown(with event: NSEvent) {
         let z = zone(for: event)
+
+        // ALL clicks on this pane update focus — so the file explorer,
+        // title bar highlight, etc. always track the active terminal.
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.store?.setFocus(paneID: self.paneID)
+        }
+
         switch z {
         case .titleBar:
             if event.clickCount == 2 {
@@ -163,6 +171,8 @@ class TerminalPaneView: NSView, LocalProcessTerminalViewDelegate {
             dragOrigin = frame.origin
             // Bring to front
             superview?.addSubview(self)
+            // Also give keyboard focus to the terminal
+            window?.makeFirstResponder(terminal)
         case .resizeStrip:
             isResizing = true
             resizeOrigin = frame.size
@@ -170,8 +180,6 @@ class TerminalPaneView: NSView, LocalProcessTerminalViewDelegate {
         case .terminal:
             // CRITICAL: make the terminal first responder so it gets keyDown
             window?.makeFirstResponder(terminal)
-            // Also update Multi-Term focus state
-            store?.setFocus(paneID: paneID)
             // Forward the click to the terminal for text selection etc.
             terminal.mouseDown(with: event)
             return
