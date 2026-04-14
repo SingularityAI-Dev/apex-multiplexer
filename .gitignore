@@ -1,0 +1,24 @@
+# Swift / SPM
+.build/
+.swiftpm/
+Package.resolved
+
+# Xcode
+*.xcodeproj/
+*.xcworkspace/
+xcuserdata/
+DerivedData/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xccheckout
+*.moved-aside
+
+# Distribution (rebuild with ./build-dist.sh)
+dist/
+
+# macOS
+.DS_Store
+*.swp
+*~
