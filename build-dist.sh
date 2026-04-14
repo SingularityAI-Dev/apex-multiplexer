@@ -30,6 +30,12 @@ mkdir -p "${APP_BUNDLE}/Contents/Resources"
 # Copy binary
 cp "${BUILD_DIR}/${EXECUTABLE}" "${APP_BUNDLE}/Contents/MacOS/${EXECUTABLE}"
 
+# Copy app icon
+if [ -f "Resources/AppIcon.icns" ]; then
+    cp Resources/AppIcon.icns "${APP_BUNDLE}/Contents/Resources/AppIcon.icns"
+    echo "  ✓ App icon copied"
+fi
+
 # Create Info.plist
 cat > "${APP_BUNDLE}/Contents/Info.plist" << PLIST
 <?xml version="1.0" encoding="UTF-8"?>
@@ -56,6 +62,8 @@ cat > "${APP_BUNDLE}/Contents/Info.plist" << PLIST
     <string>13.0</string>
     <key>NSHighResolutionCapable</key>
     <true/>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
     <key>LSUIElement</key>
     <false/>
     <key>NSSupportsAutomaticTermination</key>
