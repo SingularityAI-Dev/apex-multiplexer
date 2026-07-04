@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚡ Multi-Term
+# ⚡ Apex - Multiplexer
 
 **A native macOS terminal multiplexer for power users.**
 
@@ -38,7 +38,7 @@ Built with Swift · SwiftUI · AppKit ·
 
 ## 📸 Screenshots
 
-![Multi-Term in action](assets/screenshot.png)
+![Apex in action](assets/screenshot.png)
 
 ## 📦 Installation
 
@@ -48,11 +48,11 @@ Grab the latest release from the [Releases](../../releases) page:
 
 | Format                 | Description                                                   |
 | ---------------------- | ------------------------------------------------------------- |
-| `Multi-Term-x.x.x.pkg` | macOS installer — double-click to install to `/Applications`  |
-| `Multi-Term-x.x.x.zip` | Portable — unzip and drag `Multi-Term.app` to `/Applications` |
+| `Apex-x.x.x.pkg` | macOS installer — double-click to install to `/Applications`  |
+| `Apex-x.x.x.zip` | Portable — unzip and drag `Apex.app` to `/Applications` |
 
 > [!NOTE]
-> Multi-Term is ad-hoc signed (not notarized with Apple Developer ID). On first
+> Apex is ad-hoc signed (not notarized with Apple Developer ID). On first
 > launch, right-click the app → **Open** to bypass Gatekeeper.
 
 ### Build from source
@@ -60,8 +60,8 @@ Grab the latest release from the [Releases](../../releases) page:
 Requires **Xcode 15+** and **macOS 13 (Ventura)** or later.
 
 ```bash
-git clone https://github.com/SingularityAI-Dev/multi-term.git
-cd multi-term
+git clone https://github.com/SingularityAI-Dev/Apex-multiplexer.git
+cd Apex-Multiplexer
 swift build
 swift run
 ```
@@ -72,8 +72,8 @@ swift run
 ./build-dist.sh
 ```
 
-This produces `Multi-Term.app`, `Multi-Term-x.x.x.pkg`, and
-`Multi-Term-x.x.x.zip` in the `dist/` directory.
+This produces `Apex.app`, `Apex-x.x.x.pkg`, and
+`Apex-x.x.x.zip` in the `dist/` directory.
 
 ## 🚀 Usage
 
@@ -90,7 +90,7 @@ This produces `Multi-Term.app`, `Multi-Term-x.x.x.pkg`, and
 
 ## 🏗️ Architecture
 
-Multi-Term uses a hybrid **SwiftUI + AppKit** architecture:
+Apex uses a hybrid **SwiftUI + AppKit** architecture:
 
 ```
 ┌──────────────────────────────────────────────────────┐
@@ -120,7 +120,7 @@ Multi-Term uses a hybrid **SwiftUI + AppKit** architecture:
 SwiftUI's `NSViewRepresentable` embeds AppKit views inside an `NSHostingView`
 that intercepts all events via `hitTest`. Combined with `.offset()` using
 CALayer transforms (which don't affect AppKit's frame-based hit testing), the
-terminal views never receive mouse or keyboard events. Multi-Term solves this by
+terminal views never receive mouse or keyboard events. Apex solves this by
 hosting all terminals in a single AppKit `NSView` container where standard event
 routing works naturally.
 
@@ -174,4 +174,4 @@ This project is licensed under the [MIT License](LICENSE).
 ## 🙏 Acknowledgments
 
 - [SwiftTerm](https://github.com/migueldeicaza/SwiftTerm) by Miguel de Icaza —
-  the terminal emulator powering Multi-Term
+  the terminal emulator powering Apex
